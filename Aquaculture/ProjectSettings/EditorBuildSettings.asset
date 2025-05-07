@@ -9,6 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/LobbyScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   m_configObjects:
+    com.unity.input.settings: {fileID: 11400000, guid: da4dd59096d524069a9b65ddbc7cc8cc,
+      type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: 6b61f70f33f68442d91b3156e05e1399,
       type: 2}
     com.unity.xr.openxr.settings4: {fileID: 11400000, guid: 1ee9df715e7044691ae5e70b9d709af7,
