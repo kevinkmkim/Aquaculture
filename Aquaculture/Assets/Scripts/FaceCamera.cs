@@ -20,11 +20,10 @@ public class FaceCamera : MonoBehaviour
         if (target == null || mainCam == null)
             return;
 
-        // Get the direction from target to camera, but ignore the y-axis (only affect rotation around Y)
         Vector3 directionToCam = mainCam.position - target.position;
-        directionToCam.y = 0f; // Ignore Y-axis to prevent tilting
+        directionToCam.y = 0f;
 
-        if (directionToCam.sqrMagnitude > 0.01f) // Ensure there's some distance
+        if (directionToCam.sqrMagnitude > 0.01f)
         {
             Quaternion lookRotation = Quaternion.LookRotation(directionToCam);
             Quaternion finalRotation = Quaternion.Slerp(
@@ -33,7 +32,6 @@ public class FaceCamera : MonoBehaviour
                 Time.deltaTime * rotationSpeed
             );
 
-            // Only update Y rotation of target
             target.rotation = Quaternion.Euler(0f, finalRotation.eulerAngles.y, 0f);
         }
     }
