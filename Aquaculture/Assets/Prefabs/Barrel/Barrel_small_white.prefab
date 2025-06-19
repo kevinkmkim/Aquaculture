@@ -26,7 +26,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7798367283133099855}
@@ -40,21 +40,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1678332662998577268}
     m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 3826c3d98642b4c5b98b0c21ec212d51,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 3826c3d98642b4c5b98b0c21ec212d51,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 3826c3d98642b4c5b98b0c21ec212d51,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.25
-      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3826c3d98642b4c5b98b0c21ec212d51,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -110,10 +95,20 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 409ac9440628b4976aba4e70c67dad50, type: 2}
+    - target: {fileID: -5418609897530448583, guid: 3826c3d98642b4c5b98b0c21ec212d51,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 409ac9440628b4976aba4e70c67dad50, type: 2}
     - target: {fileID: 919132149155446097, guid: 3826c3d98642b4c5b98b0c21ec212d51,
         type: 3}
       propertyPath: m_Name
       value: Barrel
+      objectReference: {fileID: 0}
+    - target: {fileID: 1325031710525185079, guid: 3826c3d98642b4c5b98b0c21ec212d51,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
