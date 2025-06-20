@@ -42,3 +42,28 @@ This digital twin supports a wide range of research and educational use cases, i
 - Predictive Maintenance in Aquaculture Systems Using Twin Data
 - Machine Learning for Fish Health Prediction Based on Water Quality Trends
 
+---
+
+## Screenshots
+
+Here are some visuals of the system in action:
+
+### Mechanical Filter
+
+![Screenshot_01](Assets/Screenshot_01.png)
+
+![Screenshot_02](Assets/Screenshot_02.png)
+
+### Fish Tank
+
+![Screenshot_03](Assets/Screenshot_03.png)
+
+### Bio balls
+
+![Screenshot_04](Assets/Screenshot_04.png)
+
+### Daily Tasks
+
+![Screenshot_05](Assets/Screenshot_05.png)
+
+---
