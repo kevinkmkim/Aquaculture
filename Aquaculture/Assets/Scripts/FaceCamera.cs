@@ -12,7 +12,7 @@ public class FaceCamera : MonoBehaviour
 
     void Start()
     {
-        mainCam = Camera.main.transform;
+        mainCam = GetActiveCamera()?.transform;
     }
 
     void Update()
@@ -34,5 +34,18 @@ public class FaceCamera : MonoBehaviour
 
             target.rotation = Quaternion.Euler(0f, finalRotation.eulerAngles.y, 0f);
         }
+    }
+
+    private Camera GetActiveCamera()
+    {
+        Camera[] cameras = Camera.allCameras;
+        for (int i = 0; i < cameras.Length; i++)
+        {
+            if (cameras[i].enabled && cameras[i].gameObject.activeInHierarchy)
+            {
+                return cameras[i];
+            }
+        }
+        return null;
     }
 }
