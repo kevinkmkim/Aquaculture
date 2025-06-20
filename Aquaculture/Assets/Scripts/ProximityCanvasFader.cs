@@ -20,7 +20,7 @@ public class ProximityCanvasFader : MonoBehaviour
     {
         canvas = GetComponent<Canvas>();
         canvasGroup = GetComponent<CanvasGroup>();
-        camTransform = Camera.main.transform;
+        camTransform = GetActiveCamera()?.transform;
 
         canvas.enabled = false;
         canvasGroup.alpha = 0f;
@@ -48,5 +48,18 @@ public class ProximityCanvasFader : MonoBehaviour
             targetAlpha,
             Time.deltaTime * fadeSpeed
         );
+    }
+
+    private Camera GetActiveCamera()
+    {
+        Camera[] cameras = Camera.allCameras;
+        for (int i = 0; i < cameras.Length; i++)
+        {
+            if (cameras[i].enabled && cameras[i].gameObject.activeInHierarchy)
+            {
+                return cameras[i];
+            }
+        }
+        return null;
     }
 }
