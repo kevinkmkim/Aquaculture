@@ -2,6 +2,9 @@ using System;
 using System.Collections;
 using System.IO;
 using UnityEngine;
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class ScreenshotCapture : MonoBehaviour
 {
@@ -45,7 +48,11 @@ public class ScreenshotCapture : MonoBehaviour
 
     void Start()
     {
+#if UNITY_EDITOR
+        savePath = Path.Combine(Application.dataPath, folderName);
+#else
         savePath = Path.Combine(Application.persistentDataPath, folderName);
+#endif
         if (!Directory.Exists(savePath))
         {
             Directory.CreateDirectory(savePath);
@@ -59,7 +66,11 @@ public class ScreenshotCapture : MonoBehaviour
         }
 
         if (targetCamera == null)
+        {
             targetCamera = GetActiveCamera();
+            if (targetCamera == null)
+                targetCamera = FindObjectOfType<Camera>();
+        }
 
         Debug.Log($"Screenshots will be saved to: {savePath}");
     }
@@ -71,7 +82,6 @@ public class ScreenshotCapture : MonoBehaviour
             TakeScreenshot();
         }
 
-        // Burst mode
         if (enableBurstMode && Input.GetKeyDown(burstModeKey) && !isTakingBurst)
         {
             StartCoroutine(TakeBurstScreenshots());
@@ -92,7 +102,6 @@ public class ScreenshotCapture : MonoBehaviour
 
     IEnumerator CaptureFullScreen()
     {
-        // Wait for end of frame to ensure everything is rendered
         yield return new WaitForEndOfFrame();
 
         string filename = GenerateFilename();
@@ -100,16 +109,16 @@ public class ScreenshotCapture : MonoBehaviour
 
         try
         {
-            // Capture screenshot using Unity's built-in method
             ScreenCapture.CaptureScreenshot(fullPath, superSize);
 
-            // Show notification
+#if UNITY_EDITOR
+            AssetDatabase.Refresh();
+#endif
             if (showCaptureNotification)
             {
                 StartCoroutine(ShowCaptureNotification($"Screenshot saved: {filename}"));
             }
 
-            // Play sound
             if (playSound && audioSource != null)
             {
                 audioSource.Play();
@@ -158,6 +167,9 @@ public class ScreenshotCapture : MonoBehaviour
             byte[] data = GetImageData(screenshot);
             File.WriteAllBytes(fullPath, data);
 
+#if UNITY_EDITOR
+            AssetDatabase.Refresh();
+#endif
             if (showCaptureNotification)
             {
                 StartCoroutine(ShowCaptureNotification($"Screenshot saved: {filename}"));
